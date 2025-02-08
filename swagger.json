@@ -1,22 +1,9 @@
 {
-  "swagger": "2.0",
-  "info": {
-    "version": "1.0.0",
-    "title": "SSRF Test API"
-  },
-  "paths": {
-    "/test": {
-      "get": {
-        "summary": "Test SSRF Fetch",
-        "responses": {
-          "200": {
-            "description": "SSRF Check Successful",
-            "schema": {
-              "type": "string"
-            }
-          }
+    "url": "https://m0x0101.github.io/lol/test.yaml",
+    "urls": [
+        {
+            "url": "https://m0x0101.github.io/lol/test.yaml",
+            "name": "Foo"
         }
-      }
-    }
-  }
+    ]
 }
