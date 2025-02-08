@@ -1,0 +1,13 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "SSRF Test API"
+paths:
+  /test:
+    get:
+      summary: "SSRF Fetch Check"
+      responses:
+        "200":
+          description: "SSRF Check Successful"
+          schema:
+            type: "string"
