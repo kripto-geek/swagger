@@ -1,0 +1,5 @@
+{
+  "instance-id": "ssrf-test-instance",
+  "iam-role": "test-ssrf-role",
+  "credentials": "POTENTIAL-SSRF-LEAK"
+}
